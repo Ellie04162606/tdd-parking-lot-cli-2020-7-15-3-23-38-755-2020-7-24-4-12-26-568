@@ -6,4 +6,8 @@ public class ParkingBoy {
     public String parking(Car car) {
         return note + car.getCarId();
     }
+
+    public Car fetching(String noteNumber) {
+        return new Car(noteNumber);
+    }
 }
