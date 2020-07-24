@@ -6,4 +6,8 @@ public class Car {
     public Car(String carId) {
         this.carId = carId;
     }
+
+    public String getCarId() {
+        return carId;
+    }
 }
