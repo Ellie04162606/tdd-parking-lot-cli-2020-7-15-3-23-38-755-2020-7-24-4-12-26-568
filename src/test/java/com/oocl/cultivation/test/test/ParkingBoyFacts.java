@@ -2,6 +2,7 @@ package com.oocl.cultivation.test.test;
 
 import com.oocl.cultivation.test.Car;
 import com.oocl.cultivation.test.ParkingBoy;
+import com.oocl.cultivation.test.Ticket;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -30,10 +31,10 @@ class ParkingBoyFacts {
         //given
         ParkingBoy parkingBoy = new ParkingBoy();
         Car car = new Car("0691");
-        String ticket = parkingBoy.parking(car);
+        Ticket ticket = new Ticket(parkingBoy.parking(car));
 
         //when
-        Car fetchCar = parkingBoy.fetching(ticket);
+        Car fetchCar = parkingBoy.fetching(ticket.getTicket());
 
         //then
         assertEquals(car, fetchCar);
@@ -42,11 +43,11 @@ class ParkingBoyFacts {
     @Test
     void should_return_no_car_when_fetching_given_wrong_ticket() {
         //given
-        String ticket = "0000";
+        Ticket ticket = new Ticket("0000");
         ParkingBoy parkingBoy = new ParkingBoy();
 
         //when
-        Car car = parkingBoy.fetching(ticket);
+        Car car = parkingBoy.fetching(ticket.getTicket());
 
         //then
         assertNull(car);
@@ -69,11 +70,11 @@ class ParkingBoyFacts {
         //given
         ParkingBoy parkingBoy = new ParkingBoy();
         Car car = new Car("0691");
-        String ticket = parkingBoy.parking(car);
+        Ticket ticket = new Ticket(parkingBoy.parking(car));
 
         //when
-        Car fetchCar = parkingBoy.fetching(ticket);
-        Car result = parkingBoy.fetching(ticket);
+        parkingBoy.fetching(ticket.getTicket());
+        Car result = parkingBoy.fetching(ticket.getTicket());
 
         //then
         assertNull(result);

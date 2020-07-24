@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ParkingBoy {
-    String ticket = "";
     List<Car> cars = new ArrayList<>();
     int parkingLot = 0;
 
@@ -18,8 +17,8 @@ public class ParkingBoy {
         }
         cars.add(car);
         parkingLot++;
-        ticket = car.getCarId();
-        return ticket;
+        Ticket ticket = new Ticket(car.getCarId());
+        return ticket.getTicket();
     }
 
     public Car fetching(String ticket) {
