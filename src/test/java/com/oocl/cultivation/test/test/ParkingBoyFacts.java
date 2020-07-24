@@ -49,4 +49,16 @@ class ParkingBoyFacts {
         assertNull(car);
     }
 
+    @Test
+    void should_return_no_car_when_fetching_given_without_ticket() {
+        //given
+        ParkingBoy parkingBoy = new ParkingBoy();
+
+        //when
+        Car car = parkingBoy.fetching(null);
+
+        //then
+        assertNull(car);
+    }
+
 }
