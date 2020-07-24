@@ -5,6 +5,7 @@ import com.oocl.cultivation.test.ParkingBoy;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class ParkingBoyFacts {
     @Test
@@ -18,19 +19,34 @@ class ParkingBoyFacts {
         String result = parkingBoy.parking(car);
 
         //then
-        assertEquals("ticket:0691", result);
+        assertEquals("0691", result);
     }
 
     @Test
     void should_return_a_car_when_fetching_given_note_number() {
         //given
-        String ticket = "0691";
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Car car = new Car("0691");
+        String ticket = parkingBoy.parking(car);
+
+        //when
+        Car fetchCar = parkingBoy.fetching(ticket);
+
+        //then
+        assertEquals(car, fetchCar);
+    }
+
+    @Test
+    void should_return_no_car_when_fetching_given_wrong_ticket() {
+        //given
+        String ticket = "0000";
         ParkingBoy parkingBoy = new ParkingBoy();
 
         //when
         Car car = parkingBoy.fetching(ticket);
 
         //then
-        assertEquals("0691", car.getCarId());
+        assertNull(car);
     }
+
 }
