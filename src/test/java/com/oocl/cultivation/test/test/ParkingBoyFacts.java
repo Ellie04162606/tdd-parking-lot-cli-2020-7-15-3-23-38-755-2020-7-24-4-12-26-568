@@ -34,7 +34,7 @@ class ParkingBoyFacts {
         Ticket ticket = new Ticket(parkingBoy.parking(car));
 
         //when
-        Car fetchCar = parkingBoy.fetching(ticket.getTicket());
+        Car fetchCar = parkingBoy.fetching(ticket);
 
         //then
         assertEquals(car, fetchCar);
@@ -47,7 +47,7 @@ class ParkingBoyFacts {
         ParkingBoy parkingBoy = new ParkingBoy();
 
         //when
-        Car car = parkingBoy.fetching(ticket.getTicket());
+        Car car = parkingBoy.fetching(ticket);
 
         //then
         assertNull(car);
@@ -73,8 +73,8 @@ class ParkingBoyFacts {
         Ticket ticket = new Ticket(parkingBoy.parking(car));
 
         //when
-        parkingBoy.fetching(ticket.getTicket());
-        Car result = parkingBoy.fetching(ticket.getTicket());
+        parkingBoy.fetching(ticket);
+        Car result = parkingBoy.fetching(ticket);
 
         //then
         assertNull(result);
@@ -118,5 +118,4 @@ class ParkingBoyFacts {
         //then
         assertEquals("Car is parked.", result);
     }
-
 }

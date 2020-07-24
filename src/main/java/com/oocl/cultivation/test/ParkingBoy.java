@@ -6,25 +6,28 @@ import java.util.stream.Collectors;
 
 public class ParkingBoy {
     List<Car> cars = new ArrayList<>();
-    int parkingLot = 0;
+    ParkingLot parkingLot = new ParkingLot();
 
     public String parking(Car car) {
-        if (parkingLot >= 10) {
+        if (parkingLot.getPlace() >= 10) {
             return null;
         }
         if (cars.contains(car)) {
             return "Car is parked.";
         }
         cars.add(car);
-        parkingLot++;
+        parkingLot.setPlace(parkingLot.getPlace() + 1);
+        parkingLot.setCars(cars);
         Ticket ticket = new Ticket(car.getCarId());
+        ticket.setStatus("active");
         return ticket.getTicket();
     }
 
-    public Car fetching(String ticket) {
-        List<Car> fetchCar = cars.stream().filter((Car car) -> car.getCarId().equals(ticket)).collect(Collectors.toList());
+    public Car fetching(Ticket ticket) {
+        List<Car> fetchCar = parkingLot.getCars().stream().filter((Car car) -> car.getCarId().equals(ticket.getTicket())).collect(Collectors.toList());
         if (fetchCar.size() == 1) {
-            cars.removeIf(car -> car.getCarId().equals(ticket));
+            parkingLot.getCars().removeIf(car -> car.getCarId().equals(ticket.getTicket()));
+            ticket.setStatus("inactive");
             return fetchCar.get(0);
         }
         return null;
