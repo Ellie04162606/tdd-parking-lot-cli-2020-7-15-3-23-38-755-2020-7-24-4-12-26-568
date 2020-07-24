@@ -7,9 +7,14 @@ import java.util.stream.Collectors;
 public class ParkingBoy {
     String ticket = "";
     List<Car> cars = new ArrayList<>();
+    int parkingLot = 0;
 
     public String parking(Car car) {
+        if (parkingLot >= 10) {
+            return null;
+        }
         cars.add(car);
+        parkingLot++;
         ticket = car.getCarId();
         return ticket;
     }

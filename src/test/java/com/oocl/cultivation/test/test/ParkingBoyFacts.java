@@ -4,6 +4,9 @@ import com.oocl.cultivation.test.Car;
 import com.oocl.cultivation.test.ParkingBoy;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -71,6 +74,31 @@ class ParkingBoyFacts {
         //when
         Car fetchCar = parkingBoy.fetching(ticket);
         Car result = parkingBoy.fetching(ticket);
+
+        //then
+        assertNull(result);
+    }
+
+    @Test
+    void should_return_no_ticket_when_parking_given_parking_lot_more_than_10() {
+        //given
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("0001"));
+        cars.add(new Car("0002"));
+        cars.add(new Car("0003"));
+        cars.add(new Car("0004"));
+        cars.add(new Car("0005"));
+        cars.add(new Car("0006"));
+        cars.add(new Car("0007"));
+        cars.add(new Car("0008"));
+        cars.add(new Car("0009"));
+        cars.add(new Car("0010"));
+        Car car = new Car("0691");
+        ParkingBoy parkingBoy = new ParkingBoy();
+        cars.forEach(parkingBoy::parking);
+
+        //when
+        String result = parkingBoy.parking(car);
 
         //then
         assertNull(result);
