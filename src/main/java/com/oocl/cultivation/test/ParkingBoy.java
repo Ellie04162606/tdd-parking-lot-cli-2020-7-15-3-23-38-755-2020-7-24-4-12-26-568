@@ -17,6 +17,7 @@ public class ParkingBoy {
     public Car fetching(String ticket) {
         List<Car> fetchCar = cars.stream().filter((Car car) -> car.getCarId().equals(ticket)).collect(Collectors.toList());
         if (fetchCar.size() == 1) {
+            cars.removeIf(car -> car.getCarId().equals(ticket));
             return fetchCar.get(0);
         }
         return null;

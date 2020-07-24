@@ -61,4 +61,19 @@ class ParkingBoyFacts {
         assertNull(car);
     }
 
+    @Test
+    void should_return_no_car_when_fetching_given_ticket_has_benn_used() {
+        //given
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Car car = new Car("0691");
+        String ticket = parkingBoy.parking(car);
+
+        //when
+        Car fetchCar = parkingBoy.fetching(ticket);
+        Car result = parkingBoy.fetching(ticket);
+
+        //then
+        assertNull(result);
+    }
+
 }
