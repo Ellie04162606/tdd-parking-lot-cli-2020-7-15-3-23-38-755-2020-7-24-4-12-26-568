@@ -1,10 +1,10 @@
 package com.oocl.cultivation.test;
 
 public class ParkingBoy {
-    String note = "noteNumber:";
+    String ticket = "ticket:";
 
     public String parking(Car car) {
-        return note + car.getCarId();
+        return ticket + car.getCarId();
     }
 
     public Car fetching(String noteNumber) {

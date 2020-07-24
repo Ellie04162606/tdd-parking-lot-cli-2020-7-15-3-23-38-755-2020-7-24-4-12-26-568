@@ -18,17 +18,17 @@ class ParkingBoyFacts {
         String result = parkingBoy.parking(car);
 
         //then
-        assertEquals("noteNumber:0691", result);
+        assertEquals("ticket:0691", result);
     }
 
     @Test
     void should_return_a_car_when_fetching_given_note_number() {
         //given
-        String noteNumber = "0691";
+        String ticket = "0691";
         ParkingBoy parkingBoy = new ParkingBoy();
 
         //when
-        Car car = parkingBoy.fetching(noteNumber);
+        Car car = parkingBoy.fetching(ticket);
 
         //then
         assertEquals("0691", car.getCarId());
