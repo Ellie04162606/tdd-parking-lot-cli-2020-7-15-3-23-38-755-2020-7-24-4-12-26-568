@@ -13,6 +13,9 @@ public class ParkingBoy {
         if (parkingLot >= 10) {
             return null;
         }
+        if (cars.contains(car)) {
+            return "Car is parked.";
+        }
         cars.add(car);
         parkingLot++;
         ticket = car.getCarId();

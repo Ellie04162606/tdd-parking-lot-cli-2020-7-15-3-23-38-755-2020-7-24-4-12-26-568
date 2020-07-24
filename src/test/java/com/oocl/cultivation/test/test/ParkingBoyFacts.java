@@ -104,4 +104,18 @@ class ParkingBoyFacts {
         assertNull(result);
     }
 
+    @Test
+    void should_return_wrong_when_parking_given_parked_car() {
+        //given
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Car car = new Car("0691");
+        parkingBoy.parking(car);
+
+        //when
+        String result = parkingBoy.parking(car);
+
+        //then
+        assertEquals("Car is parked.", result);
+    }
+
 }
