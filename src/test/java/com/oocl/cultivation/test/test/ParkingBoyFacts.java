@@ -80,10 +80,10 @@ class ParkingBoyFacts {
 
 
     @Test
-    void should_return_no_ticket_when_parking_given_parking_lot_more_than_10() {
+    void should_return_no_ticket_when_parking_given_parking_lot_full() {
         //given
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i <= 10; i++) {
+        for (int i = 0; i <= 20; i++) {
             cars.add(new Car("000" + i));
         }
 
@@ -147,7 +147,7 @@ class ParkingBoyFacts {
     void should_return_error_message_not_enough_position_when_get_error_message_given_parking_without_places() {
         //given
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i <= 10; i++) {
+        for (int i = 0; i <= 20; i++) {
             cars.add(new Car("000" + i));
         }
 
@@ -167,7 +167,7 @@ class ParkingBoyFacts {
     void should_return_ticket_when_parking_given_parking_lot_1_full_and_parking_to_parking_lot_2() {
         //given
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i <= 10; i++) {
+        for (int i = 0; i < 10; i++) {
             cars.add(new Car("000" + i));
         }
 

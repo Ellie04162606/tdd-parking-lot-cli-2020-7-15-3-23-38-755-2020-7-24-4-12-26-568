@@ -6,10 +6,12 @@ import java.util.List;
 public class ParkingLot {
     private int place;
     private List<Car> cars;
+    private String name;
 
-    public ParkingLot() {
+    public ParkingLot(String name) {
         this.place = 0;
         this.cars = new ArrayList<>();
+        this.name = name;
     }
 
     public int getPlace() {
@@ -22,9 +24,5 @@ public class ParkingLot {
 
     public List<Car> getCars() {
         return cars;
-    }
-
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
     }
 }
