@@ -66,7 +66,7 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_return_no_car_when_fetching_given_ticket_has_benn_used() {
+    void should_return_no_car_when_fetching_given_ticket_has_been_used() {
         //given
         ParkingBoy parkingBoy = new ParkingBoy();
         Car car = new Car("0691");
@@ -80,20 +80,15 @@ class ParkingBoyFacts {
         assertNull(result);
     }
 
+
     @Test
     void should_return_no_ticket_when_parking_given_parking_lot_more_than_10() {
         //given
         List<Car> cars = new ArrayList<>();
-        cars.add(new Car("0001"));
-        cars.add(new Car("0002"));
-        cars.add(new Car("0003"));
-        cars.add(new Car("0004"));
-        cars.add(new Car("0005"));
-        cars.add(new Car("0006"));
-        cars.add(new Car("0007"));
-        cars.add(new Car("0008"));
-        cars.add(new Car("0009"));
-        cars.add(new Car("0010"));
+        for (int i = 0; i <= 10; i++) {
+            cars.add(new Car("000" + i));
+        }
+
         Car car = new Car("0691");
         ParkingBoy parkingBoy = new ParkingBoy();
         cars.forEach(parkingBoy::parking);

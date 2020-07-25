@@ -19,7 +19,6 @@ public class ParkingBoy {
         parkingLot.setPlace(parkingLot.getPlace() + 1);
         parkingLot.setCars(cars);
         Ticket ticket = new Ticket(car.getCarId());
-        ticket.setStatus("active");
         return ticket.getTicket();
     }
 
@@ -27,7 +26,6 @@ public class ParkingBoy {
         List<Car> fetchCar = parkingLot.getCars().stream().filter((Car car) -> car.getCarId().equals(ticket.getTicket())).collect(Collectors.toList());
         if (fetchCar.size() == 1) {
             parkingLot.getCars().removeIf(car -> car.getCarId().equals(ticket.getTicket()));
-            ticket.setStatus("inactive");
             return fetchCar.get(0);
         }
         return null;
