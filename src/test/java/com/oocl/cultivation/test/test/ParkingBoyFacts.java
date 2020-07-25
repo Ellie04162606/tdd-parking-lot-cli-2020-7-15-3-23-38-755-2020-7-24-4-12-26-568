@@ -1,8 +1,6 @@
 package com.oocl.cultivation.test.test;
 
-import com.oocl.cultivation.test.Car;
-import com.oocl.cultivation.test.ParkingBoy;
-import com.oocl.cultivation.test.Ticket;
+import com.oocl.cultivation.test.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -180,5 +178,26 @@ class ParkingBoyFacts {
 
         //then
         assertNotNull(ticket);
+    }
+
+    @Test
+    void_should_return_with_ticket_with_car_parking_in_more_empty_position_parking_lot_when_parking_given_a_car(){
+        //given
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            parkingLots.add(new ParkingLot("parkingLot" + i));
+        }
+
+        parkingLots.get(0).setPlace(2);
+        parkingLots.get(1).setPlace(3);
+
+        Car car = new Car("0619");
+
+        //when
+        ParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+        Ticket ticket = smartParkingBoy.parking(car);
+
+        //then
+        assertEquals(parkingLots.get(0),ticket.getParkingLot());
     }
 }
