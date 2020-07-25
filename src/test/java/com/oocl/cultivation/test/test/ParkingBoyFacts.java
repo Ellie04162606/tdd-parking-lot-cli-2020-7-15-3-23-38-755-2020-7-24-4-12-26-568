@@ -14,10 +14,10 @@ class ParkingBoyFacts {
         //given
         String carId = "0691";
         Car car = new Car(carId);
-        ParkingBoy parkingBoy = new ParkingBoy();
+        NotSmartParkingBoy notSmartParkingBoy = new NotSmartParkingBoy();
 
         //when
-        Ticket result = parkingBoy.parking(car);
+        Ticket result = notSmartParkingBoy.parking(car);
 
         //then
         assertNotNull(result);
@@ -26,11 +26,11 @@ class ParkingBoyFacts {
     @Test
     void should_return_a_car_when_fetching_given_ticket() {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy();
+        NotSmartParkingBoy notSmartParkingBoy = new NotSmartParkingBoy();
         Car car = new Car("0691");
 
         //when
-        Car fetchCar = parkingBoy.fetching(parkingBoy.parking(car));
+        Car fetchCar = notSmartParkingBoy.fetching(notSmartParkingBoy.parking(car));
 
         //then
         assertEquals(car, fetchCar);
@@ -40,10 +40,10 @@ class ParkingBoyFacts {
     void should_return_no_car_when_fetching_given_wrong_ticket() {
         //given
         Ticket ticket = new Ticket(new Car("0000"));
-        ParkingBoy parkingBoy = new ParkingBoy();
+        NotSmartParkingBoy notSmartParkingBoy = new NotSmartParkingBoy();
 
         //when
-        Car car = parkingBoy.fetching(ticket);
+        Car car = notSmartParkingBoy.fetching(ticket);
 
         //then
         assertNull(car);
@@ -52,10 +52,10 @@ class ParkingBoyFacts {
     @Test
     void should_return_no_car_when_fetching_given_without_ticket() {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy();
+        NotSmartParkingBoy notSmartParkingBoy = new NotSmartParkingBoy();
 
         //when
-        Car car = parkingBoy.fetching(null);
+        Car car = notSmartParkingBoy.fetching(null);
 
         //then
         assertNull(car);
@@ -64,13 +64,13 @@ class ParkingBoyFacts {
     @Test
     void should_return_no_car_when_fetching_given_ticket_has_been_used() {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy();
+        NotSmartParkingBoy notSmartParkingBoy = new NotSmartParkingBoy();
         Car car = new Car("0691");
-        Ticket ticket = parkingBoy.parking(car);
-        parkingBoy.fetching(ticket);
+        Ticket ticket = notSmartParkingBoy.parking(car);
+        notSmartParkingBoy.fetching(ticket);
 
         //when
-        Car result = parkingBoy.fetching(ticket);
+        Car result = notSmartParkingBoy.fetching(ticket);
 
         //then
         assertNull(result);
@@ -86,11 +86,11 @@ class ParkingBoyFacts {
         }
 
         Car car = new Car("0691");
-        ParkingBoy parkingBoy = new ParkingBoy();
-        cars.forEach(parkingBoy::parking);
+        NotSmartParkingBoy notSmartParkingBoy = new NotSmartParkingBoy();
+        cars.forEach(notSmartParkingBoy::parking);
 
         //when
-        Ticket result = parkingBoy.parking(car);
+        Ticket result = notSmartParkingBoy.parking(car);
 
         //then
         assertNull(result);
@@ -99,12 +99,12 @@ class ParkingBoyFacts {
     @Test
     void should_return_wrong_when_parking_given_parked_car() {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy();
+        NotSmartParkingBoy notSmartParkingBoy = new NotSmartParkingBoy();
         Car car = new Car("0691");
-        parkingBoy.parking(car);
+        notSmartParkingBoy.parking(car);
 
         //when
-        Ticket result = parkingBoy.parking(car);
+        Ticket result = notSmartParkingBoy.parking(car);
 
         //then
         assertNull(result);
@@ -113,16 +113,16 @@ class ParkingBoyFacts {
     @Test
     void should_return_error_message_unrecognized_parking_ticket_when_get_error_message_given_fetch_no_car() {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy();
+        NotSmartParkingBoy notSmartParkingBoy = new NotSmartParkingBoy();
         Car car = new Car("0691");
-        Ticket ticket = parkingBoy.parking(car);
-        Car car1 = parkingBoy.fetching(ticket);
+        Ticket ticket = notSmartParkingBoy.parking(car);
+        Car car1 = notSmartParkingBoy.fetching(ticket);
 
-        Ticket ticket1 = parkingBoy.parking(car);
-        Car car2 = parkingBoy.fetching(ticket);
+        Ticket ticket1 = notSmartParkingBoy.parking(car);
+        Car car2 = notSmartParkingBoy.fetching(ticket);
 
         //when
-        String result = parkingBoy.getResponseMessage();
+        String result = notSmartParkingBoy.getResponseMessage();
 
         //then
         assertEquals("Unrecognized parking ticket.", result);
@@ -131,11 +131,11 @@ class ParkingBoyFacts {
     @Test
     void should_return_error_message_please_provide_your_parking_ticket_when_get_error_message_given_fetch_no_car() {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy();
-        parkingBoy.fetching(null);
+        NotSmartParkingBoy notSmartParkingBoy = new NotSmartParkingBoy();
+        notSmartParkingBoy.fetching(null);
 
         //when
-        String result = parkingBoy.getResponseMessage();
+        String result = notSmartParkingBoy.getResponseMessage();
 
         //then
         assertEquals("Please provide your parking ticket.", result);
@@ -150,12 +150,12 @@ class ParkingBoyFacts {
         }
 
         Car car = new Car("0691");
-        ParkingBoy parkingBoy = new ParkingBoy();
-        cars.forEach(parkingBoy::parking);
+        NotSmartParkingBoy notSmartParkingBoy = new NotSmartParkingBoy();
+        cars.forEach(notSmartParkingBoy::parking);
 
         //when
-        parkingBoy.parking(car);
-        String result = parkingBoy.getResponseMessage();
+        notSmartParkingBoy.parking(car);
+        String result = notSmartParkingBoy.getResponseMessage();
 
         //then
         assertEquals("Not enough position.", result);
@@ -170,18 +170,18 @@ class ParkingBoyFacts {
         }
 
         Car car = new Car("0691");
-        ParkingBoy parkingBoy = new ParkingBoy();
-        cars.forEach(parkingBoy::parking);
+        NotSmartParkingBoy notSmartParkingBoy = new NotSmartParkingBoy();
+        cars.forEach(notSmartParkingBoy::parking);
 
         //when
-        Ticket ticket = parkingBoy.parking(car);
+        Ticket ticket = notSmartParkingBoy.parking(car);
 
         //then
         assertNotNull(ticket);
     }
 
     @Test
-    void_should_return_with_ticket_with_car_parking_in_more_empty_position_parking_lot_when_parking_given_a_car(){
+    void should_return_with_ticket_with_car_parking_in_more_empty_position_parking_lot_when_parking_given_a_car(){
         //given
         List<ParkingLot> parkingLots = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
