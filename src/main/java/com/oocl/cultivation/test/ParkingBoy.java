@@ -19,9 +19,11 @@ public class ParkingBoy {
 
     public Ticket parking(Car car) {
         if (parkingLot.getPlace() >= 10) {
+            setResponseMessage("Not enough position.");
             return null;
         }
         if (parkingLot.getCars().contains(car)) {
+            setResponseMessage("Car is parked");
             return null;
         }
         parkingLot.getCars().add(car);

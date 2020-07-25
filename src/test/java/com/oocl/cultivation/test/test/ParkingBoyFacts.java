@@ -142,4 +142,24 @@ class ParkingBoyFacts {
         //then
         assertEquals("Please provide your parking ticket.", result);
     }
+
+    @Test
+    void should_return_error_message_not_enough_position_when_get_error_message_given_parking_without_places() {
+        //given
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i <= 10; i++) {
+            cars.add(new Car("000" + i));
+        }
+
+        Car car = new Car("0691");
+        ParkingBoy parkingBoy = new ParkingBoy();
+        cars.forEach(parkingBoy::parking);
+
+        //when
+        parkingBoy.parking(car);
+        String result = parkingBoy.getResponseMessage();
+
+        //then
+        assertEquals("Not enough position.", result);
+    }
 }
