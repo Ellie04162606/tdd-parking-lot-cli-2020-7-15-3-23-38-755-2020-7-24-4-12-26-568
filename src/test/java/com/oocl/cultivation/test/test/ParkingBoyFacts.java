@@ -162,4 +162,23 @@ class ParkingBoyFacts {
         //then
         assertEquals("Not enough position.", result);
     }
+
+    @Test
+    void should_return_ticket_when_parking_given_parking_lot_1_full_and_parking_to_parking_lot_2() {
+        //given
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i <= 10; i++) {
+            cars.add(new Car("000" + i));
+        }
+
+        Car car = new Car("0691");
+        ParkingBoy parkingBoy = new ParkingBoy();
+        cars.forEach(parkingBoy::parking);
+
+        //when
+        Ticket ticket = parkingBoy.parking(car);
+
+        //then
+        assertNotNull(ticket);
+    }
 }
