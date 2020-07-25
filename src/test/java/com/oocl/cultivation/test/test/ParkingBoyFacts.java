@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingBoyFacts {
     @Test
@@ -20,10 +19,10 @@ class ParkingBoyFacts {
         ParkingBoy parkingBoy = new ParkingBoy();
 
         //when
-        String result = parkingBoy.parking(car);
+        Ticket result = parkingBoy.parking(car);
 
         //then
-        assertEquals("0691", result);
+        assertEquals("0691", result.getTicket());
     }
 
     @Test
@@ -31,7 +30,7 @@ class ParkingBoyFacts {
         //given
         ParkingBoy parkingBoy = new ParkingBoy();
         Car car = new Car("0691");
-        Ticket ticket = new Ticket(parkingBoy.parking(car));
+        Ticket ticket = new Ticket(parkingBoy.parking(car).getTicket());
 
         //when
         Car fetchCar = parkingBoy.fetching(ticket);
@@ -70,7 +69,7 @@ class ParkingBoyFacts {
         //given
         ParkingBoy parkingBoy = new ParkingBoy();
         Car car = new Car("0691");
-        Ticket ticket = new Ticket(parkingBoy.parking(car));
+        Ticket ticket = new Ticket(parkingBoy.parking(car).getTicket());
 
         //when
         parkingBoy.fetching(ticket);
@@ -94,7 +93,7 @@ class ParkingBoyFacts {
         cars.forEach(parkingBoy::parking);
 
         //when
-        String result = parkingBoy.parking(car);
+        Ticket result = parkingBoy.parking(car);
 
         //then
         assertNull(result);
@@ -108,9 +107,9 @@ class ParkingBoyFacts {
         parkingBoy.parking(car);
 
         //when
-        String result = parkingBoy.parking(car);
+        Ticket result = parkingBoy.parking(car);
 
         //then
-        assertEquals("Car is parked.", result);
+        assertNull(result);
     }
 }

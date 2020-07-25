@@ -8,18 +8,18 @@ public class ParkingBoy {
     List<Car> cars = new ArrayList<>();
     ParkingLot parkingLot = new ParkingLot();
 
-    public String parking(Car car) {
+    public Ticket parking(Car car) {
         if (parkingLot.getPlace() >= 10) {
             return null;
         }
         if (cars.contains(car)) {
-            return "Car is parked.";
+            return null;
         }
         cars.add(car);
         parkingLot.setPlace(parkingLot.getPlace() + 1);
         parkingLot.setCars(cars);
         Ticket ticket = new Ticket(car.getCarId());
-        return ticket.getTicket();
+        return ticket;
     }
 
     public Car fetching(Ticket ticket) {
