@@ -32,6 +32,9 @@ public class ParkingBoy {
     }
 
     public Car fetching(Ticket ticket) {
+        if (ticket == null) {
+            setResponseMessage("Please provide your parking ticket.");
+        }
         if (!ticketList.contains(ticket) && ticket != null) {
             setResponseMessage("Unrecognized parking ticket.");
         }
