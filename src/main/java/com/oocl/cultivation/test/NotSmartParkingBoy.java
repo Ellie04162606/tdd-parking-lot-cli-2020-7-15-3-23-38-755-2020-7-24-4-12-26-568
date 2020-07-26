@@ -53,20 +53,20 @@ public class NotSmartParkingBoy extends ParkingBoy {
         }
 
         ParkingLot parkingLot1 = parkingLots.get(0);
-        for (int i = 0; i < cars.size(); i++) {
+        for (Car car : cars) {
             if (parkingLot1.getPlace() <= 10) {
-                parkingLot1.getCars().add(cars.get(i));
+                parkingLot1.getCars().add(car);
                 parkingLot1.setPlace(parkingLot1.getPlace() + 1);
-                Ticket ticket = new Ticket(cars.get(i));
+                Ticket ticket = new Ticket(car);
                 ticketList.add(ticket);
                 ticket.setParkingLot(parkingLot1);
                 tickets.add(ticket);
 
             } else {
                 ParkingLot parkingLot2 = parkingLots.get(1);
-                parkingLot2.getCars().add(cars.get(i));
+                parkingLot2.getCars().add(car);
                 parkingLot2.setPlace(parkingLot2.getPlace() + 1);
-                Ticket ticket = new Ticket(cars.get(i));
+                Ticket ticket = new Ticket(car);
                 ticketList.add(ticket);
                 ticket.setParkingLot(parkingLot2);
                 tickets.add(ticket);
