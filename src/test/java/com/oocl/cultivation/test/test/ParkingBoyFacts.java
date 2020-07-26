@@ -37,6 +37,23 @@ class ParkingBoyFacts {
     }
 
     @Test
+    void should_return_multiple_ticket_when_parking_given_multiple_car(){
+        //given
+        List<Car> cars = new ArrayList<>();
+        Car car1=new Car("0001");
+        Car car2=new Car("0002");
+        cars.add(car1);
+        cars.add(car2);
+
+        //when
+        ParkingBoy notSmartParkingBoy = new NotSmartParkingBoy();
+        List<Ticket> tickets = notSmartParkingBoy.parking(cars);
+
+        //then
+        assertNotNull(tickets);
+    }
+
+    @Test
     void should_return_no_car_when_fetching_given_wrong_ticket() {
         //given
         Ticket ticket = new Ticket(new Car("0000"));
