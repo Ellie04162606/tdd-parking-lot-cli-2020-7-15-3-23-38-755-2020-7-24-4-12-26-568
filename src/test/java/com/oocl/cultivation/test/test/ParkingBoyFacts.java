@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingBoyFacts {
     @Test
-    void should_return_note_number_when_parking_given_a_car() {
+    void should_return_a_ticket_when_parking_given_a_car() {
         //given
         String carId = "0691";
         Car car = new Car(carId);
