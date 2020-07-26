@@ -8,10 +8,23 @@ public class ParkingLot {
     private List<Car> cars;
     private String name;
 
+    public int getCapacity() {
+        return capacity;
+    }
+
+    private int capacity;
+
     public ParkingLot(String name) {
         this.place = 0;
         this.cars = new ArrayList<>();
         this.name = name;
+    }
+
+    public ParkingLot(String name, int capacity) {
+        this.place = 0;
+        this.cars = new ArrayList<>();
+        this.name = name;
+        this.capacity = capacity;
     }
 
     public int getPlace() {
