@@ -24,7 +24,7 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_return_a_car_when_fetching_given_ticket() {
+    void should_return_a_car_when_parking_boy_fetching_given_ticket() {
         //given
         NotSmartParkingBoy notSmartParkingBoy = new NotSmartParkingBoy();
         Car car = new Car("0691");
