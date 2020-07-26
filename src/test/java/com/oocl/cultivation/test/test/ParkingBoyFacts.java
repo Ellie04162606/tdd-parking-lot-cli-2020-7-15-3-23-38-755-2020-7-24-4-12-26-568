@@ -200,4 +200,25 @@ class ParkingBoyFacts {
         //then
         assertEquals(parkingLots.get(0),ticket.getParkingLot());
     }
+
+    @Test
+    void should_return_ticket_with_car_parking_in_parking_lot_which_has_a_larger_available_position_rate_given_a_car_and_a_super_smart_parking_boy(){
+        //given
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            parkingLots.add(new ParkingLot("parkingLot" + i,i+9));
+        }
+        parkingLots.get(0).setPlace(8);
+        parkingLots.get(1).setPlace(3);
+        parkingLots.get(2).setPlace(1);
+
+        Car car = new Car("0619");
+
+        //when
+        ParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
+        Ticket ticket = superSmartParkingBoy.parking(car);
+
+        //then
+        assertEquals(parkingLots.get(2),ticket.getParkingLot());
+    }
 }
