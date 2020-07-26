@@ -38,7 +38,6 @@ public abstract class ParkingBoy {
                 return fetchCar.get(0);
             }
         }
-
         return null;
     }
 

@@ -197,7 +197,7 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_return_ticket_when_parking_given_parking_lot_1_full_and_parking_to_parking_lot_2() {
+    void should_return_ticket_when_not_smart_parking_boy_parking_given_parking_lot_1_full_and_parking_to_parking_lot_2() {
         //given
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
