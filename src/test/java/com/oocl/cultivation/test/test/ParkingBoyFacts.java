@@ -255,6 +255,24 @@ class ParkingBoyFacts {
     }
 
     @Test
+    void should_return_a_car_when_smart_parking_boy_fetching_given_a_ticket(){
+        //given
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            parkingLots.add(new ParkingLot("parkingLot" + i));
+        }
+
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+        Car car = new Car("0691");
+
+        //when
+        Car fetchCar = smartParkingBoy.fetching(smartParkingBoy.parking(car));
+
+        //then
+        assertEquals(car, fetchCar);
+    }
+
+    @Test
     void should_return_ticket_with_car_parking_in_parking_lot_which_has_a_larger_available_position_rate_given_a_car_and_a_super_smart_parking_boy() {
         //given
         List<ParkingLot> parkingLots = new ArrayList<>();
