@@ -216,7 +216,7 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_return_with_ticket_with_car_parking_in_more_empty_position_parking_lot_when_parking_given_a_car() {
+    void should_return_with_ticket_with_car_parking_in_more_empty_position_parking_lot_when_smart_parking_boy_parking_given_a_car() {
         //given
         List<ParkingLot> parkingLots = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
