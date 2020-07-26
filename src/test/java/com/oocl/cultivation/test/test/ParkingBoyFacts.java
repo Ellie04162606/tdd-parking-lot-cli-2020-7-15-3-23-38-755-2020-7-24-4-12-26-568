@@ -316,48 +316,23 @@ class ParkingBoyFacts {
         assertEquals(car2, fetchCar);
     }
 
-//    @Test
-//    void should_return_no_car_when_fetching_given_wrong_ticket() {
-//        //given
-//        Ticket ticket = new Ticket(new Car("0000"));
-//        NotSmartParkingBoy notSmartParkingBoy = new NotSmartParkingBoy();
-//
-//        //when
-//        Car car = notSmartParkingBoy.fetching(ticket);
-//
-//        //then
-//        assertNull(car);
-//    }
-//
-//    @Test
-//    void should_return_no_car_when_fetching_given_without_ticket() {
-//        //given
-//        NotSmartParkingBoy notSmartParkingBoy = new NotSmartParkingBoy();
-//
-//        //when
-//        Car car = notSmartParkingBoy.fetching(null);
-//
-//        //then
-//        assertNull(car);
-//    }
-//
-//    @Test
-//    void should_return_no_car_when_fetching_given_ticket_has_been_used() {
-//        //given
-//        NotSmartParkingBoy notSmartParkingBoy = new NotSmartParkingBoy();
-//        Car car = new Car("0691");
-//        Ticket ticket = notSmartParkingBoy.parking(car);
-//        notSmartParkingBoy.fetching(ticket);
-//
-//        //when
-//        Car result = notSmartParkingBoy.fetching(ticket);
-//
-//        //then
-//        assertNull(result);
-//    }
-//
-//
-//
+    @Test
+    void should_return_no_car_when_smart_parking_boy_fetching_given_wrong_ticket() {
+        //given
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            parkingLots.add(new ParkingLot("parkingLot" + i));
+        }
+        Ticket ticket = new Ticket(new Car("0000"));
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+
+        //when
+        Car car = smartParkingBoy.fetching(ticket);
+
+        //then
+        assertNull(car);
+    }
+
     @Test
     void should_return_ticket_with_car_parking_in_parking_lot_which_has_a_larger_available_position_rate_given_a_car_and_a_super_smart_parking_boy() {
         //given
