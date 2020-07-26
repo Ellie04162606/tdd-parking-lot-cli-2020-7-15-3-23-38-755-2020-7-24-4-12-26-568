@@ -37,21 +37,21 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_return_multiple_ticket_when_parking_given_multiple_car(){
+    void should_return_multiple_ticket_when_parking_given_multiple_car() {
         //given
         List<Car> cars = new ArrayList<>();
-        Car car1=new Car("0001");
-        Car car2=new Car("0002");
+        Car car1 = new Car("0001");
+        Car car2 = new Car("0002");
         cars.add(car1);
         cars.add(car2);
 
         //when
-        ParkingBoy notSmartParkingBoy = new NotSmartParkingBoy();
+        NotSmartParkingBoy notSmartParkingBoy = new NotSmartParkingBoy();
         List<Ticket> tickets = notSmartParkingBoy.parking(cars);
-
         //then
         assertNotNull(tickets);
     }
+
 
     @Test
     void should_return_no_car_when_fetching_given_wrong_ticket() {
@@ -198,7 +198,7 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_return_with_ticket_with_car_parking_in_more_empty_position_parking_lot_when_parking_given_a_car(){
+    void should_return_with_ticket_with_car_parking_in_more_empty_position_parking_lot_when_parking_given_a_car() {
         //given
         List<ParkingLot> parkingLots = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
@@ -215,15 +215,15 @@ class ParkingBoyFacts {
         Ticket ticket = smartParkingBoy.parking(car);
 
         //then
-        assertEquals(parkingLots.get(0),ticket.getParkingLot());
+        assertEquals(parkingLots.get(0), ticket.getParkingLot());
     }
 
     @Test
-    void should_return_ticket_with_car_parking_in_parking_lot_which_has_a_larger_available_position_rate_given_a_car_and_a_super_smart_parking_boy(){
+    void should_return_ticket_with_car_parking_in_parking_lot_which_has_a_larger_available_position_rate_given_a_car_and_a_super_smart_parking_boy() {
         //given
         List<ParkingLot> parkingLots = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            parkingLots.add(new ParkingLot("parkingLot" + i,i+9));
+            parkingLots.add(new ParkingLot("parkingLot" + i, i + 9));
         }
         parkingLots.get(0).setPlace(8);
         parkingLots.get(1).setPlace(3);
@@ -236,6 +236,6 @@ class ParkingBoyFacts {
         Ticket ticket = superSmartParkingBoy.parking(car);
 
         //then
-        assertEquals(parkingLots.get(2),ticket.getParkingLot());
+        assertEquals(parkingLots.get(2), ticket.getParkingLot());
     }
 }
