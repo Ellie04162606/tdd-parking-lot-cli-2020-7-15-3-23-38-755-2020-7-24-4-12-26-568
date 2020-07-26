@@ -52,7 +52,6 @@ class ParkingBoyFacts {
         assertNotNull(tickets);
     }
 
-
     @Test
     void should_return_corresponding_cars_when_fetching_given_multiple_tickets() {
         //given
@@ -234,6 +233,25 @@ class ParkingBoyFacts {
 
         //then
         assertEquals(parkingLots.get(0), ticket.getParkingLot());
+    }
+
+    @Test
+    void should_return_a_ticket_when_smart_parking_boy_parking_given_a_car() {
+        //given
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        Car car = new Car("0691");
+        for (int i = 0; i < 2; i++) {
+            parkingLots.add(new ParkingLot("parkingLot" + i));
+        }
+        parkingLots.get(0).setPlace(2);
+        parkingLots.get(1).setPlace(9);
+
+        //when
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+        Ticket ticket = smartParkingBoy.parking(car);
+
+        //then
+        assertNotNull(ticket);
     }
 
     @Test
